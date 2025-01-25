@@ -1,4 +1,5 @@
 using Interfaces;
+using SoundSystem;
 using UnityEngine;
 
 namespace Bubbles
@@ -9,7 +10,8 @@ namespace Bubbles
         [SerializeField] private float duration;
         [SerializeField] [Range(0,1)] private float speedMultiplier;
         [SerializeField] [Range(0,1)] private float distanceMultiplier;
-        
+        [SerializeField] private string soundName;
+
         private void Start()
         {
             gameObject.tag = "Enemy";
@@ -18,6 +20,7 @@ namespace Bubbles
         public void OnInteract()
         {
             BubbleEvents.OnSlowdown(duration, speedMultiplier, distanceMultiplier);
+            AudioManager.instance.Play(soundName);
             Destroy(this);
         }
     }

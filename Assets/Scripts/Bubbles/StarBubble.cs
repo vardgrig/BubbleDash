@@ -4,15 +4,13 @@ using UnityEngine;
 
 namespace Bubbles
 {
-    [DisallowMultipleComponent]
-    public class BurstBubble : MonoBehaviour, IBubble
+    public class StarBubble : MonoBehaviour, IBubble
     {
-        [SerializeField] private float range;
         [SerializeField] private string soundName;
 
         public void OnInteract()
         {
-            BubbleEvents.OnBurst(range);
+            BubbleEvents.OnCollectStar();
             AudioManager.instance.Play(soundName);
             Destroy(this);
         }

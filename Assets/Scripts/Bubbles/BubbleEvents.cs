@@ -13,6 +13,12 @@ namespace Bubbles
         public static event Action<float> Invert;
         public static event Action<float> Burst;
         public static event Action<float, float, float> Slowdown;
+        public static event Action CollectStar;
+
+        public static void OnCollectStar()
+        {
+            CollectStar?.Invoke();
+        }
 
         public static void OnKill()
         {

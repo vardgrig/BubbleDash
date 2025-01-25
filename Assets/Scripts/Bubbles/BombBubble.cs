@@ -1,5 +1,6 @@
 using System.Collections;
 using Interfaces;
+using SoundSystem;
 using UnityEngine;
 
 namespace Bubbles
@@ -9,8 +10,9 @@ namespace Bubbles
     {
         [SerializeField] private float timeToDestroy = 2f;
         [SerializeField] private float range = 10f;
+        [SerializeField] private string soundName;
         private bool _isActive;
-        
+
         private void Start()
         {
             gameObject.tag = "Enemy";
@@ -21,6 +23,7 @@ namespace Bubbles
             if (_isActive) 
                 return;
             _isActive = true;
+            AudioManager.instance.Play(soundName);
             StartCoroutine(DestroyBubble());
         }
 

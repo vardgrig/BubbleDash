@@ -1,4 +1,5 @@
 using Interfaces;
+using SoundSystem;
 using UnityEngine;
 
 namespace Bubbles
@@ -7,11 +8,13 @@ namespace Bubbles
     public class FreezeTimerBubble : MonoBehaviour, IBubble
     {
         [SerializeField] private float duration;
+        [SerializeField] private string soundName;
         private bool _isFrozen;
         public void OnInteract()
         {
             if (_isFrozen) return;
             _isFrozen = true;
+            AudioManager.instance.Play(soundName);
             BubbleEvents.OnFreezeTimer(duration);
             Destroy(this);
         }

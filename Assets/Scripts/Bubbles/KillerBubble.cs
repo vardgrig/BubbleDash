@@ -1,4 +1,5 @@
 using Interfaces;
+using SoundSystem;
 using UnityEngine;
 
 namespace Bubbles
@@ -6,6 +7,8 @@ namespace Bubbles
     [DisallowMultipleComponent]
     public class KillerBubble : MonoBehaviour, IBubble
     {
+        [SerializeField] private string soundName;
+
         private void Start()
         {
             gameObject.tag = "Enemy";
@@ -14,6 +17,7 @@ namespace Bubbles
         public void OnInteract()
         {
             BubbleEvents.OnKill();
+            AudioManager.instance.Play(soundName);
             Destroy(this);
         }
     }

@@ -26,6 +26,7 @@ namespace Character
         private GameObject _bubble;
 
         private int _starsCount;
+        private const int STARS_TO_COLLECT = 10;
         
         private Rigidbody _rigidbody;
         private Camera _cam;
@@ -43,8 +44,9 @@ namespace Character
             BubbleEvents.Explode += OnExplode;
             BubbleEvents.Burst += OnBurst;
             BubbleEvents.Slowdown += OnSlowdown;
+            BubbleEvents.CollectStar += OnCollectStar;
         }
-        
+
         private void OnDisable()
         {
             BubbleEvents.Kill -= OnKillCharacter;
@@ -54,6 +56,7 @@ namespace Character
             BubbleEvents.Explode -= OnExplode;
             BubbleEvents.Burst -= OnBurst;
             BubbleEvents.Slowdown += OnSlowdown;
+            BubbleEvents.CollectStar -= OnCollectStar;
         }
         #endregion
 
@@ -155,7 +158,6 @@ namespace Character
         #endregion
 
         #region EventHandlers
-
         private void OnAddExtraDash()
         {
             var ability = new KeyValuePair<Abilities, float>(Abilities.ExtraDash, 1);
@@ -216,6 +218,16 @@ namespace Character
             dashSpeed /= sM;
             dashDuration /= dM;
         }
+        private void OnCollectStar()
+        {
+            _starsCount += 1;
+            UIEvents.OnStarUpdate(_starsCount, STARS_TO_COLLECT);
+            if (_starsCount == STARS_TO_COLLECT)
+            {
+                //TODO: Portal mechanism
+                CharacterEvents.OnWinnable();
+            }
+        }
         #endregion
 
         #region Abilities
@@ -241,7 +253,6 @@ namespace Character
 
         private void ExtraDash()
         {
-            // TODO: Extra Dash functionality
             StartDash();
         }
 

@@ -1,4 +1,5 @@
 using Interfaces;
+using SoundSystem;
 using UnityEngine;
 
 namespace Bubbles
@@ -7,6 +8,7 @@ namespace Bubbles
     public class InvertBubble : MonoBehaviour, IBubble
     {
         [SerializeField] private float duration;
+        [SerializeField] private string soundName;
         
         private void Start()
         {
@@ -16,6 +18,7 @@ namespace Bubbles
         public void OnInteract()
         {
             BubbleEvents.OnInvert(duration);
+            AudioManager.instance.Play(soundName);
             Destroy(this);
         }
     }

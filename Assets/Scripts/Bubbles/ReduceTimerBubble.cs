@@ -1,4 +1,5 @@
 using Interfaces;
+using SoundSystem;
 using UnityEngine;
 
 namespace Bubbles
@@ -7,7 +8,7 @@ namespace Bubbles
     public class ReduceTimerBubble : MonoBehaviour, IBubble
     {
         [SerializeField] private float secondsToReduce;
-
+        [SerializeField] private string soundName;
                 
         private void Start()
         {
@@ -17,6 +18,7 @@ namespace Bubbles
         public void OnInteract()
         {
             BubbleEvents.OnTimerChange(secondsToReduce);
+            AudioManager.instance.Play(soundName);
             Destroy(this);
         }
     }
