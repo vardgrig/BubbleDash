@@ -19,6 +19,7 @@ namespace Bubbles
         {
             BubbleEvents.OnInvert(duration);
             AudioManager.instance.Play(soundName);
+            transform.GetChild(0).gameObject.SetActive(false);
             Destroy(this);
         }
     }

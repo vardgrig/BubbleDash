@@ -8,8 +8,8 @@ namespace SoundSystem
     {
         public static AudioManager instance;
         public Sound[] sounds;
-	
-        void Awake()
+
+        private void Awake()
         {
             if (instance != null)
             {
@@ -20,11 +20,12 @@ namespace SoundSystem
                 instance = this;
                 DontDestroyOnLoad(gameObject);
             }
-            foreach (Sound s in sounds)
+            foreach (var s in sounds)
             {
                 s.source = gameObject.AddComponent<AudioSource>();
                 s.source.clip = s.clip;
                 s.source.outputAudioMixerGroup = s.mixer;
+                s.source.playOnAwake = s.playOnAwake;
                 s.source.volume = s.volume;
                 s.source.pitch = s.pitch;
                 s.source.loop = s.loop;
@@ -32,12 +33,12 @@ namespace SoundSystem
         }
         public void Play(string sound)
         {
-            Sound s = Array.Find(sounds, item => item.name == sound);
+            var s = Array.Find(sounds, item => item.name == sound);
             s.source.Play();
         }
         public void Stop(string sound)
         {
-            Sound s = Array.Find(sounds, item => item.name == sound);
+            var s = Array.Find(sounds, item => item.name == sound);
             s.source.Stop();
         }
     }

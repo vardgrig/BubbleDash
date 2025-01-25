@@ -24,6 +24,7 @@ namespace Bubbles
                 return;
             _isActive = true;
             AudioManager.instance.Play(soundName);
+            transform.GetChild(0).gameObject.SetActive(false);
             StartCoroutine(DestroyBubble());
         }
 

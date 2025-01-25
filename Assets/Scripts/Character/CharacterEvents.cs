@@ -8,6 +8,9 @@ namespace Character
         public static event Action Winnable;
         public static event Action Finish;
         public static event Action Dead;
+        public static event Action BubbleEnter;
+        public static event Action BubbleExit;
+        public static event Action Win;
 
         public static void OnDash(bool isDashing)
         {
@@ -27,6 +30,21 @@ namespace Character
         public static void OnDead()
         {
             Dead?.Invoke();
+        }
+
+        public static void OnBubbleEnter()
+        {
+            BubbleEnter?.Invoke();
+        }
+        
+        public static void OnBubbleExit()
+        {
+            BubbleExit?.Invoke();
+        }
+
+        public static void OnWin()
+        {
+            Win?.Invoke();
         }
     }
 }

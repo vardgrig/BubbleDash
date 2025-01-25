@@ -24,7 +24,9 @@ namespace UI
         private void OnFinished()
         {
             animator.SetTrigger(finishParameter);
-            AudioManager.instance.Play(finishSoundName);
+            if(!string.IsNullOrEmpty(finishSoundName))
+                AudioManager.instance.Play(finishSoundName);
+            CharacterEvents.OnWin();
         }
     }
 }

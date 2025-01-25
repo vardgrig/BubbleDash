@@ -114,11 +114,12 @@ namespace Character
             if (other.TryGetComponent(out IBubble bubble))
             {
                 _bubble = other.gameObject;
+                CharacterEvents.OnBubbleEnter();
                 bubble.OnInteract();
             }
             else if (other.TryGetComponent(out Portal portal))
             {
-                CharacterEvents.OnWinnable();
+                CharacterEvents.OnFinish();
             }
             StopDash();
         }
@@ -136,7 +137,7 @@ namespace Character
         {
             if (_dashTime > 0)
             {
-                //transform.Translate(_dashDirection * (dashSpeed * Time.deltaTime));
+                transform.Translate(_dashDirection * (dashSpeed * Time.deltaTime));
                 _dashTime -= Time.deltaTime;
             }
             else
@@ -152,14 +153,14 @@ namespace Character
             _dashDirection = _cam.transform.forward.normalized;
             _isDashing = true;
             _dashTime = dashDuration;
-            _rigidbody.isKinematic = false; // changed the line from 155 to 150
-            _rigidbody.AddForce(_dashDirection * dashSpeed, ForceMode.Impulse); //Added rigidbody dashing
             
             if (_bubble == null) 
                 return;
             
+            CharacterEvents.OnBubbleExit();
             _bubble.GetComponent<Collider>().enabled = false;
-            Destroy(_bubble);
+            _rigidbody.isKinematic = false;
+            //Destroy(_bubble);
             _bubble = null;
         }
 

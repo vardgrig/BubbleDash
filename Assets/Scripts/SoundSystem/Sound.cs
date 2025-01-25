@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Serialization;
 
 namespace SoundSystem
 {
@@ -16,6 +17,7 @@ namespace SoundSystem
         [Range(-3f, 3f)]
         public float pitch = 1;
         public bool loop = false;
+        public bool playOnAwake;
 
         [HideInInspector]
         public AudioSource source;

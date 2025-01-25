@@ -1,5 +1,5 @@
-using System;
 using System.Collections;
+using General;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -29,13 +29,7 @@ namespace Character
         private void OnDead()
         {
             deathEffect.SetActive(true);
-            StartCoroutine(LoadLevel());
-        }
-
-        private IEnumerator LoadLevel()
-        {
-            yield return new WaitForSeconds(effectDuration);
-            SceneManager.LoadScene(levelName);
+            StartCoroutine(SceneLoader.LoadSceneAsync(levelName, effectDuration));
         }
     }
 }

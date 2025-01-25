@@ -99,8 +99,8 @@ MonoBehaviour:
   quality: 3
   highReflectionMask:
     serializedVersion: 2
-    m_Bits: 257
+    m_Bits: 1
   mediumReflectionMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
   keepUnderCamera: 1

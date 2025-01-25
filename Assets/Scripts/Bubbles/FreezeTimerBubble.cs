@@ -16,6 +16,7 @@ namespace Bubbles
             _isFrozen = true;
             AudioManager.instance.Play(soundName);
             BubbleEvents.OnFreezeTimer(duration);
+            transform.GetChild(0).gameObject.SetActive(false);
             Destroy(this);
         }
     }

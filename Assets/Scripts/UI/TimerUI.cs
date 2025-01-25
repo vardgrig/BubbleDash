@@ -1,9 +1,8 @@
-using System;
 using System.Collections;
-using Character;
 using Helpers;
 using TMPro;
 using UnityEngine;
+using DG.Tweening;
 
 namespace UI
 {
@@ -34,7 +33,7 @@ namespace UI
         private IEnumerator AnimateFontSize(float sizeBefore, float sizeAfter, float duration)
         {
             var elapsedTime = 0f;
-
+            
             while (elapsedTime < duration)
             {
                 timerText.fontSize = Mathf.Lerp(sizeBefore, sizeAfter, elapsedTime / duration);
