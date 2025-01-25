@@ -1,15 +1,22 @@
 using System.Collections;
-using Character;
 using Interfaces;
 using UnityEngine;
 
 namespace Bubbles
 {
+    [DisallowMultipleComponent]
     public class BombBubble : MonoBehaviour, IBubble
     {
         [SerializeField] private float timeToDestroy = 2f;
-        private bool _isActive = false;
-        public void OnInteract(CharacterMovement characterMovement)
+        [SerializeField] private float range = 10f;
+        private bool _isActive;
+        
+        private void Start()
+        {
+            gameObject.tag = "Enemy";
+        }
+            
+        public void OnInteract()
         {
             if (_isActive) 
                 return;
@@ -20,7 +27,7 @@ namespace Bubbles
         private IEnumerator DestroyBubble()
         {
             yield return new WaitForSeconds(timeToDestroy);
-            BubbleEvents.OnExplode(timeToDestroy, transform.position);
+            BubbleEvents.OnExplode(range, transform.position);
             Destroy(this);
         }
     }

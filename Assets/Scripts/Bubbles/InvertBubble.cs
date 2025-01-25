@@ -1,13 +1,19 @@
-using Character;
 using Interfaces;
 using UnityEngine;
 
 namespace Bubbles
 {
+    [DisallowMultipleComponent]
     public class InvertBubble : MonoBehaviour, IBubble
     {
         [SerializeField] private float duration;
-        public void OnInteract(CharacterMovement characterMovement)
+        
+        private void Start()
+        {
+            gameObject.tag = "Enemy";
+        }
+
+        public void OnInteract()
         {
             BubbleEvents.OnInvert(duration);
             Destroy(this);

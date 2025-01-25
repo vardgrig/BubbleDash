@@ -1,12 +1,17 @@
-using Character;
 using Interfaces;
 using UnityEngine;
 
 namespace Bubbles
 {
+    [DisallowMultipleComponent]
     public class KillerBubble : MonoBehaviour, IBubble
     {
-        public void OnInteract(CharacterMovement characterMovement)
+        private void Start()
+        {
+            gameObject.tag = "Enemy";
+        }
+
+        public void OnInteract()
         {
             BubbleEvents.OnKill();
             Destroy(this);

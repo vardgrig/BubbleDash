@@ -11,16 +11,17 @@ namespace Bubbles
         public static event Action<float> FreezeTimer;
         public static event Action<float, Vector3> Explode;
         public static event Action<float> Invert;
-        
-        //TODO: Create all the events
+        public static event Action<float> Burst;
+        public static event Action<float, float, float> Slowdown;
+
         public static void OnKill()
         {
             Kill?.Invoke();
         }
 
-        public static void OnTimerChange(float obj)
+        public static void OnTimerChange(float seconds)
         {
-            TimerChange?.Invoke(obj);
+            TimerChange?.Invoke(seconds);
         }
 
         public static void OnExtraDash()
@@ -28,19 +29,29 @@ namespace Bubbles
             ExtraDash?.Invoke();
         }
 
-        public static void OnFreezeTimer(float obj)
+        public static void OnFreezeTimer(float seconds)
         {
-            FreezeTimer?.Invoke(obj);
+            FreezeTimer?.Invoke(seconds);
         }
 
-        public static void OnExplode(float obj, Vector3 pos)
+        public static void OnExplode(float range, Vector3 pos)
         {
-            Explode?.Invoke(obj, pos);
+            Explode?.Invoke(range, pos);
         }
 
-        public static void OnInvert(float obj)
+        public static void OnInvert(float seconds)
         {
-            Invert?.Invoke(obj);
+            Invert?.Invoke(seconds);
+        }
+
+        public static void OnBurst(float range)
+        {
+            Burst?.Invoke(range);
+        }
+
+        public static void OnSlowdown(float duration, float speedMultiplier, float distanceMultiplier)
+        {
+            Slowdown?.Invoke(duration, speedMultiplier, distanceMultiplier);
         }
     }
 }

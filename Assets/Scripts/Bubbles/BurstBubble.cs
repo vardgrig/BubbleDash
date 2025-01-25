@@ -1,14 +1,16 @@
-using Character;
 using Interfaces;
 using UnityEngine;
 
 namespace Bubbles
 {
+    [DisallowMultipleComponent]
     public class BurstBubble : MonoBehaviour, IBubble
     {
-        public void OnInteract(CharacterMovement characterMovement)
+        [SerializeField] private float range;
+        public void OnInteract()
         {
-            throw new System.NotImplementedException();
+            BubbleEvents.OnBurst(range);
+            Destroy(this);
         }
     }
 }

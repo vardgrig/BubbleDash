@@ -1,16 +1,23 @@
-using Character;
 using Interfaces;
 using UnityEngine;
 
 namespace Bubbles
 {
+    [DisallowMultipleComponent]
     public class ReduceTimerBubble : MonoBehaviour, IBubble
     {
         [SerializeField] private float secondsToReduce;
 
-        public void OnInteract(CharacterMovement characterMovement)
+                
+        private void Start()
+        {
+            gameObject.tag = "Enemy";
+        }
+
+        public void OnInteract()
         {
             BubbleEvents.OnTimerChange(secondsToReduce);
+            Destroy(this);
         }
     }
 }
