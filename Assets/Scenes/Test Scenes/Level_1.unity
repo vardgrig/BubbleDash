@@ -2177,6 +2177,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DashBubble (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 921893108529562909, guid: ab185129b6984554b96f9e4de3ad576c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2783,6 +2787,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DashBubble (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 921893108529562909, guid: ab185129b6984554b96f9e4de3ad576c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3064,6 +3072,10 @@ PrefabInstance:
     - target: {fileID: 921893108529562909, guid: ab185129b6984554b96f9e4de3ad576c, type: 3}
       propertyPath: m_Name
       value: DashBubble (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 921893108529562909, guid: ab185129b6984554b96f9e4de3ad576c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4524,6 +4536,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DashBubble (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 921893108529562909, guid: ab185129b6984554b96f9e4de3ad576c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4979,6 +4995,10 @@ PrefabInstance:
     - target: {fileID: 921893108529562909, guid: ab185129b6984554b96f9e4de3ad576c, type: 3}
       propertyPath: m_Name
       value: DashBubble (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 921893108529562909, guid: ab185129b6984554b96f9e4de3ad576c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5474,6 +5494,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DashBubble (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 921893108529562909, guid: ab185129b6984554b96f9e4de3ad576c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5542,6 +5566,10 @@ PrefabInstance:
     - target: {fileID: 921893108529562909, guid: ab185129b6984554b96f9e4de3ad576c, type: 3}
       propertyPath: m_Name
       value: DashBubble (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 921893108529562909, guid: ab185129b6984554b96f9e4de3ad576c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6417,6 +6445,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DashBubble (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 921893108529562909, guid: ab185129b6984554b96f9e4de3ad576c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6910,6 +6942,10 @@ PrefabInstance:
     - target: {fileID: 921893108529562909, guid: ab185129b6984554b96f9e4de3ad576c, type: 3}
       propertyPath: m_Name
       value: DashBubble (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 921893108529562909, guid: ab185129b6984554b96f9e4de3ad576c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7804,6 +7840,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DashBubble (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 921893108529562909, guid: ab185129b6984554b96f9e4de3ad576c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8084,6 +8124,10 @@ PrefabInstance:
     - target: {fileID: 921893108529562909, guid: ab185129b6984554b96f9e4de3ad576c, type: 3}
       propertyPath: m_Name
       value: DashBubble (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 921893108529562909, guid: ab185129b6984554b96f9e4de3ad576c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8799,6 +8843,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DashBubble (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 921893108529562909, guid: ab185129b6984554b96f9e4de3ad576c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9508,6 +9556,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DashBubble (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 921893108529562909, guid: ab185129b6984554b96f9e4de3ad576c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9683,6 +9735,10 @@ PrefabInstance:
     - target: {fileID: 921893108529562909, guid: ab185129b6984554b96f9e4de3ad576c, type: 3}
       propertyPath: m_Name
       value: DashBubble (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 921893108529562909, guid: ab185129b6984554b96f9e4de3ad576c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10671,6 +10727,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DashBubble (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 921893108529562909, guid: ab185129b6984554b96f9e4de3ad576c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11056,6 +11116,10 @@ PrefabInstance:
     - target: {fileID: 921893108529562909, guid: ab185129b6984554b96f9e4de3ad576c, type: 3}
       propertyPath: m_Name
       value: DashBubble (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 921893108529562909, guid: ab185129b6984554b96f9e4de3ad576c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11842,6 +11906,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DashBubble (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 921893108529562909, guid: ab185129b6984554b96f9e4de3ad576c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12447,6 +12515,10 @@ PrefabInstance:
     - target: {fileID: 921893108529562909, guid: ab185129b6984554b96f9e4de3ad576c, type: 3}
       propertyPath: m_Name
       value: DashBubble (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 921893108529562909, guid: ab185129b6984554b96f9e4de3ad576c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13584,6 +13656,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DashBubble
       objectReference: {fileID: 0}
+    - target: {fileID: 921893108529562909, guid: ab185129b6984554b96f9e4de3ad576c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13975,6 +14051,10 @@ PrefabInstance:
     - target: {fileID: 921893108529562909, guid: ab185129b6984554b96f9e4de3ad576c, type: 3}
       propertyPath: m_Name
       value: DashBubble (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 921893108529562909, guid: ab185129b6984554b96f9e4de3ad576c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16614,6 +16694,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DashBubble (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 921893108529562909, guid: ab185129b6984554b96f9e4de3ad576c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18092,6 +18176,10 @@ PrefabInstance:
     - target: {fileID: 921893108529562909, guid: ab185129b6984554b96f9e4de3ad576c, type: 3}
       propertyPath: m_Name
       value: DashBubble (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 921893108529562909, guid: ab185129b6984554b96f9e4de3ad576c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
