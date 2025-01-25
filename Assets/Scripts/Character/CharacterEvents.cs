@@ -7,6 +7,7 @@ namespace Character
         public static event Action<bool> Dash;
         public static event Action Winnable;
         public static event Action Finish;
+        public static event Action Dead;
 
         public static void OnDash(bool isDashing)
         {
@@ -21,6 +22,11 @@ namespace Character
         public static void OnFinish()
         {
             Finish?.Invoke();
+        }
+
+        public static void OnDead()
+        {
+            Dead?.Invoke();
         }
     }
 }

@@ -3,7 +3,7 @@ using Character;
 using UnityEngine;
 using SoundSystem;
 
-namespace Portal
+namespace PortalSystem
 {
     public class Portal : MonoBehaviour
     {
@@ -24,14 +24,6 @@ namespace Portal
         {
             effect.SetActive(true);
             AudioManager.instance.Play(soundName);
-        }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.gameObject.CompareTag("Player"))
-            {
-                CharacterEvents.OnWinnable();
-            }
         }
     }
 }

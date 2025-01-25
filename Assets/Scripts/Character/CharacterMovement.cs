@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Bubbles;
 using Interfaces;
+using PortalSystem;
 using UI;
 using UnityEngine;
-
 namespace Character
 {
     public class CharacterMovement : MonoBehaviour
@@ -70,20 +70,12 @@ namespace Character
 
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0) && !_isDashing)
-            {
-                StartDash();
-            }
-            else if (Input.GetMouseButtonDown(1) && _abilities.Count > 0)
-            {
-                ActivateAbility();
-            }
+            DashingAndAbilities();
+            TimerUpdates();
+        }
 
-            if (_isDashing)
-            {
-                ContinueDash();
-            }
-
+        private void TimerUpdates()
+        {
             if (!_isFreezeTime)
             {
                 timer -= Time.deltaTime;
@@ -100,14 +92,35 @@ namespace Character
                 OnKillCharacter();
             }
         }
+        private void DashingAndAbilities()
+        {
+            if (Input.GetMouseButtonDown(0) && !_isDashing)
+            {
+                StartDash();
+            }
+            else if (Input.GetMouseButtonDown(1) && _abilities.Count > 0)
+            {
+                ActivateAbility();
+            }
+            if (_isDashing)
+            {
+                ContinueDash();
+            }
+        }
 
         private void OnTriggerEnter(Collider other)
         {
             print("Trigger");
-            _bubble = other.gameObject;
-            _bubble?.GetComponent<IBubble>()?.OnInteract();
-            _rigidbody.isKinematic = true;
-            StopDash(); //TODO: implement stopping mechanism
+            if (other.TryGetComponent(out IBubble bubble))
+            {
+                _bubble = other.gameObject;
+                bubble.OnInteract();
+            }
+            else if (other.TryGetComponent(out Portal portal))
+            {
+                CharacterEvents.OnWinnable();
+            }
+            StopDash();
         }
 
         private void OnTriggerExit(Collider other)
@@ -123,7 +136,7 @@ namespace Character
         {
             if (_dashTime > 0)
             {
-                transform.Translate(_dashDirection * (dashSpeed * Time.deltaTime));
+                //transform.Translate(_dashDirection * (dashSpeed * Time.deltaTime));
                 _dashTime -= Time.deltaTime;
             }
             else
@@ -139,11 +152,12 @@ namespace Character
             _dashDirection = _cam.transform.forward.normalized;
             _isDashing = true;
             _dashTime = dashDuration;
+            _rigidbody.isKinematic = false; // changed the line from 155 to 150
+            _rigidbody.AddForce(_dashDirection * dashSpeed, ForceMode.Impulse); //Added rigidbody dashing
             
             if (_bubble == null) 
                 return;
             
-            _rigidbody.isKinematic = false;
             _bubble.GetComponent<Collider>().enabled = false;
             Destroy(_bubble);
             _bubble = null;
@@ -152,7 +166,11 @@ namespace Character
         private void StopDash()
         {
             CharacterEvents.OnDash(false);
-            _isDashing = false; //stop mechanism
+            _isDashing = false;
+            if (_bubble)
+            {
+                _rigidbody.isKinematic = true;
+            }
         }
 
         #endregion
@@ -175,8 +193,8 @@ namespace Character
 
         private void OnKillCharacter()
         {
-            // TODO: kill the character
-            print("Character is dead!");
+            _rigidbody.isKinematic = true;
+            CharacterEvents.OnDead();
         }
 
         private void OnFreezeTimer(float obj)
@@ -274,7 +292,6 @@ namespace Character
                 }
             }
         }
-
         #endregion
     }
 }
