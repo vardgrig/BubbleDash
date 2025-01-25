@@ -24,6 +24,8 @@ namespace Character
         private float _dashTime;
         private Vector3 _dashDirection;
         private GameObject _bubble;
+
+        private int _starsCount;
         
         private Rigidbody _rigidbody;
         private Camera _cam;
