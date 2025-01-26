@@ -15,6 +15,8 @@ namespace Character
         [SerializeField] private float timer = 60f;
         [SerializeField] private float dashSpeed = 10f;
         [SerializeField] private float dashDuration = 1f;
+        [SerializeField] private int starsToCollect = 10;
+
 
         private bool _isDashing;
         private bool _isFreezeTime;
@@ -25,7 +27,6 @@ namespace Character
         private bool _canWin;
 
         private int _starsCount = 0;
-        private const int STARS_TO_COLLECT = 10;
         
         private Rigidbody _rigidbody;
         private Camera _cam;
@@ -59,6 +60,7 @@ namespace Character
             _cam = Camera.main;
             _rigidbody = GetComponent<Rigidbody>();
             _previousTimerInt = Mathf.FloorToInt(timer);
+            UIEvents.OnStarUpdate(0, starsToCollect);
         }
 
         private void Update()
@@ -200,8 +202,8 @@ namespace Character
         private void OnCollectStar()
         {
             _starsCount += 1;
-            UIEvents.OnStarUpdate(_starsCount, STARS_TO_COLLECT);
-            if (_starsCount != STARS_TO_COLLECT)
+            UIEvents.OnStarUpdate(_starsCount, starsToCollect);
+            if (_starsCount != starsToCollect)
                 return;
             CharacterEvents.OnWinnable();
             _canWin = true;

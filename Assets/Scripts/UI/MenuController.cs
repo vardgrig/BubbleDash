@@ -37,6 +37,8 @@ namespace UI
 
         private void Start()
         {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
             EnterMainMenu();
         }
 
