@@ -24,8 +24,9 @@ namespace Character
         private float _dashTime;
         private Vector3 _dashDirection;
         private GameObject _bubble;
+        private bool _canWin;
 
-        private int _starsCount;
+        private int _starsCount = 9;
         private const int STARS_TO_COLLECT = 10;
         
         private Rigidbody _rigidbody;
@@ -89,7 +90,10 @@ namespace Character
 
             if (timer < 0)
             {
+                timer = 0;
+                UIEvents.OnTimerUpdate(0);
                 OnKillCharacter();
+                _isFreezeTime = true;
             }
         }
         private void DashingAndAbilities()
@@ -119,7 +123,8 @@ namespace Character
             }
             else if (other.TryGetComponent(out Portal portal))
             {
-                CharacterEvents.OnFinish();
+                if(_canWin)
+                    CharacterEvents.OnFinish();
             }
             StopDash();
         }
@@ -241,11 +246,10 @@ namespace Character
         {
             _starsCount += 1;
             UIEvents.OnStarUpdate(_starsCount, STARS_TO_COLLECT);
-            if (_starsCount == STARS_TO_COLLECT)
-            {
-                //TODO: Portal mechanism
-                CharacterEvents.OnWinnable();
-            }
+            if (_starsCount != STARS_TO_COLLECT)
+                return;
+            CharacterEvents.OnWinnable();
+            _canWin = true;
         }
         #endregion
 

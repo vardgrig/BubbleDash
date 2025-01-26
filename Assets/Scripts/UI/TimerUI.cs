@@ -27,6 +27,10 @@ namespace UI
             var sizeBefore = timerText.fontSize;
             var sizeAfter = timerText.fontSize + 15;
             timerText.text = TimeConverter.ToFormatMinSec(seconds);
+            if (seconds < 10)
+            {
+                timerText.color = Color.red;
+            }
             StartCoroutine(AnimateFontSize(sizeBefore, sizeAfter, 0.25f));
         }
         

@@ -10,7 +10,7 @@ namespace Character
         public static event Action Dead;
         public static event Action BubbleEnter;
         public static event Action BubbleExit;
-        public static event Action Win;
+        public static event Action<float> Win;
 
         public static void OnDash(bool isDashing)
         {
@@ -42,9 +42,9 @@ namespace Character
             BubbleExit?.Invoke();
         }
 
-        public static void OnWin()
+        public static void OnWin(float timeToLoad)
         {
-            Win?.Invoke();
+            Win?.Invoke(timeToLoad);
         }
     }
 }

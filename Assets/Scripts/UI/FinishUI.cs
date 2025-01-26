@@ -1,5 +1,6 @@
 using System;
 using Character;
+using DG.Tweening;
 using SoundSystem;
 using UnityEngine;
 
@@ -8,8 +9,8 @@ namespace UI
     [RequireComponent(typeof(Animator))]
     public class FinishUI : MonoBehaviour
     {
-        [SerializeField] private Animator animator;
-        [SerializeField] private string finishParameter;
+        [SerializeField] private float fadeDuration = 1f;
+        [SerializeField] private CanvasGroup faderGroup;
         [SerializeField] private string finishSoundName;
         private void OnEnable()
         {
@@ -23,10 +24,10 @@ namespace UI
         
         private void OnFinished()
         {
-            animator.SetTrigger(finishParameter);
             if(!string.IsNullOrEmpty(finishSoundName))
                 AudioManager.instance.Play(finishSoundName);
-            CharacterEvents.OnWin();
+            CharacterEvents.OnWin(fadeDuration);
+            faderGroup.DOFade(1, fadeDuration);
         }
     }
 }

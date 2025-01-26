@@ -17,7 +17,7 @@ namespace Character
             CharacterEvents.Win -= OnWin;
         }
 
-        private void OnWin()
+        private void OnWin(float timeToLoad)
         {
             StartCoroutine(SceneLoader.LoadSceneAsync(levelToLoad, timeToLoad));
         }
