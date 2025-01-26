@@ -121,7 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToDestroy: 2
   range: 10
-  soundName: EnterBubble
+  soundName: Explode
 --- !u!1 &1785930590540002418
 GameObject:
   m_ObjectHideFlags: 0

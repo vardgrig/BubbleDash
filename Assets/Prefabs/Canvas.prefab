@@ -52,8 +52,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityIcons:
   - {fileID: 21300000, guid: e48a7ecded5f91a40b9a8e3163ba3f89, type: 3}
-  - {fileID: 21300000, guid: 0df841506ae3e654ab0c4abb4a67cabd, type: 3}
   - {fileID: 21300000, guid: 2a5592e8b99ea4f4db06c20f04236150, type: 3}
+  - {fileID: 21300000, guid: 0df841506ae3e654ab0c4abb4a67cabd, type: 3}
   lastAbilityIcon: {fileID: 5284519839366987641}
   previousAbilityIcon: {fileID: 5441869414335494113}
 --- !u!1 &2557565856022142695

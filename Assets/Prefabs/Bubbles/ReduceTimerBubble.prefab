@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   secondsToReduce: -10
-  soundName: EnterBubble
+  soundName: Timer--
 --- !u!1 &1785930590540002418
 GameObject:
   m_ObjectHideFlags: 0

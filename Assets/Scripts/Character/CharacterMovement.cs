@@ -26,7 +26,7 @@ namespace Character
         private GameObject _bubble;
         private bool _canWin;
 
-        private int _starsCount = 9;
+        private int _starsCount = 0;
         private const int STARS_TO_COLLECT = 10;
         
         private Rigidbody _rigidbody;

@@ -22,7 +22,7 @@ namespace UI
         {
             if (starsCount == finalStars)
             {
-                starsText.text = "";
+                starsText.text = "Finish";
                 return;
             }
             starsText.text = starsCount + "/" + finalStars;
