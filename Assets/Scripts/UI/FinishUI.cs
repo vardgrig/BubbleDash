@@ -6,7 +6,6 @@ using UnityEngine;
 
 namespace UI
 {
-    [RequireComponent(typeof(Animator))]
     public class FinishUI : MonoBehaviour
     {
         [SerializeField] private float fadeDuration = 1f;

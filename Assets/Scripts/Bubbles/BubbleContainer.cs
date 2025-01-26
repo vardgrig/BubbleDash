@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Character;
+using Interfaces;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -69,8 +70,10 @@ namespace Bubbles
             _activatedBubbleIndex = randNum;
         }
         
-        private void OnBubbleEntered()
+        private void OnBubbleEntered(IBubble bubble)
         {
+            if (bubble != _bubbles[_activatedBubbleIndex].GetComponent<IBubble>())
+                return;
             _isInBubble = true;
         }
 

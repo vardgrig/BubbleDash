@@ -1,4 +1,5 @@
 using System;
+using Interfaces;
 
 namespace Character
 {
@@ -8,7 +9,7 @@ namespace Character
         public static event Action Winnable;
         public static event Action Finish;
         public static event Action Dead;
-        public static event Action BubbleEnter;
+        public static event Action<IBubble> BubbleEnter;
         public static event Action BubbleExit;
         public static event Action<float> Win;
 
@@ -32,9 +33,9 @@ namespace Character
             Dead?.Invoke();
         }
 
-        public static void OnBubbleEnter()
+        public static void OnBubbleEnter(IBubble bubble)
         {
-            BubbleEnter?.Invoke();
+            BubbleEnter?.Invoke(bubble);
         }
         
         public static void OnBubbleExit()

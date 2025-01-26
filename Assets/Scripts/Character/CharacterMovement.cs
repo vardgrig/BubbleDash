@@ -16,8 +16,6 @@ namespace Character
         [SerializeField] private float dashSpeed = 10f;
         [SerializeField] private float dashDuration = 1f;
 
-
-        private List<KeyValuePair<Abilities, float>> _abilities = new();
         private bool _isDashing;
         private bool _isFreezeTime;
         private bool _isInBubble;
@@ -40,11 +38,8 @@ namespace Character
         {
             BubbleEvents.Kill += OnKillCharacter;
             BubbleEvents.TimerChange += OnChangeTimer;
-            BubbleEvents.ExtraDash += OnAddExtraDash;
             BubbleEvents.FreezeTimer += OnFreezeTimer;
             BubbleEvents.Explode += OnExplode;
-            BubbleEvents.Burst += OnBurst;
-            BubbleEvents.Slowdown += OnSlowdown;
             BubbleEvents.CollectStar += OnCollectStar;
         }
 
@@ -52,11 +47,8 @@ namespace Character
         {
             BubbleEvents.Kill -= OnKillCharacter;
             BubbleEvents.TimerChange -= OnChangeTimer;
-            BubbleEvents.ExtraDash -= OnAddExtraDash;
             BubbleEvents.FreezeTimer -= OnFreezeTimer;
             BubbleEvents.Explode -= OnExplode;
-            BubbleEvents.Burst -= OnBurst;
-            BubbleEvents.Slowdown += OnSlowdown;
             BubbleEvents.CollectStar -= OnCollectStar;
         }
         #endregion
@@ -102,10 +94,6 @@ namespace Character
             {
                 StartDash();
             }
-            else if (Input.GetMouseButtonDown(1) && _abilities.Count > 0)
-            {
-                ActivateAbility();
-            }
             if (_isDashing)
             {
                 ContinueDash();
@@ -118,7 +106,7 @@ namespace Character
             if (other.TryGetComponent(out IBubble bubble))
             {
                 _bubble = other.gameObject;
-                CharacterEvents.OnBubbleEnter();
+                CharacterEvents.OnBubbleEnter(bubble);
                 bubble.OnInteract();
             }
             else if (other.TryGetComponent(out Portal portal))
@@ -131,6 +119,10 @@ namespace Character
 
         private void OnTriggerExit(Collider other)
         {
+            if (other.TryGetComponent(out StarBubble bubble))
+            {
+                Destroy(bubble.gameObject);
+            }
             _rigidbody.isKinematic = false;
         }
 
@@ -165,7 +157,6 @@ namespace Character
             CharacterEvents.OnBubbleExit();
             _bubble.GetComponent<Collider>().enabled = false;
             _rigidbody.isKinematic = false;
-            //Destroy(_bubble);
             _bubble = null;
         }
 
@@ -182,15 +173,6 @@ namespace Character
         #endregion
 
         #region EventHandlers
-        private void OnAddExtraDash()
-        {
-            var ability = new KeyValuePair<Abilities, float>(Abilities.ExtraDash, 1);
-            _abilities.Add(ability);
-            
-            var abilities = _abilities.Select(a => a.Key).ToList();
-            UIEvents.OnAbilitiesUpdate(abilities);
-        }
-
         private void OnChangeTimer(float seconds)
         {
             timer += seconds;
@@ -203,13 +185,9 @@ namespace Character
             CharacterEvents.OnDead();
         }
 
-        private void OnFreezeTimer(float obj)
+        private void OnFreezeTimer(float seconds)
         {
-            var ability = new KeyValuePair<Abilities, float>(Abilities.FreezeTime, obj);
-            _abilities.Add(ability);
-            
-            var abilities = _abilities.Select(a => a.Key).ToList();
-            UIEvents.OnAbilitiesUpdate(abilities);
+            StartCoroutine(FreezeTimer(seconds));
         }
         
         private void OnExplode(float range, Vector3 pos)
@@ -218,29 +196,6 @@ namespace Character
             {
                 OnKillCharacter();
             }
-        }
-
-        private void OnBurst(float range)
-        {
-            var ability = new KeyValuePair<Abilities, float>(Abilities.Burst, range);
-            _abilities.Add(ability);
-            
-            var abilities = _abilities.Select(a => a.Key).ToList();
-            UIEvents.OnAbilitiesUpdate(abilities);
-        }
-
-        private void OnSlowdown(float duration, float speedMultiplier, float distanceMultiplier)
-        {
-            StartCoroutine(OnSlowdownEffect(duration, speedMultiplier, distanceMultiplier));
-        }
-
-        private IEnumerator OnSlowdownEffect(float d, float sM, float dM)
-        {
-            dashSpeed *= sM;
-            dashDuration *= dM;
-            yield return new WaitForSeconds(d);
-            dashSpeed /= sM;
-            dashDuration /= dM;
         }
         private void OnCollectStar()
         {
@@ -254,48 +209,11 @@ namespace Character
         #endregion
 
         #region Abilities
-        private void ActivateAbility()
-        {
-            switch (_abilities[^1].Key)
-            {
-                case Abilities.ExtraDash:
-                    ExtraDash();
-                    break;
-                case Abilities.Burst:
-                    Burst(_abilities[^1].Value);
-                    break;
-                case Abilities.FreezeTime:
-                    StartCoroutine(FreezeTimer(_abilities[^1].Value));
-                    break;
-            }
-            _abilities.RemoveAt(_abilities.Count - 1);
-            
-            var abilities = _abilities.Select(a => a.Key).ToList();
-            UIEvents.OnAbilitiesUpdate(abilities);
-        }
-
-        private void ExtraDash()
-        {
-            StartDash();
-        }
-
         private IEnumerator FreezeTimer(float duration)
         {
             _isFreezeTime = true;
             yield return new WaitForSeconds(duration);
             _isFreezeTime = false;
-        }
-
-        private void Burst(float range)
-        {
-            var hitColliders = Physics.OverlapSphere(transform.position, range);
-            foreach (var hitCollider in hitColliders)
-            {
-                if (hitCollider.CompareTag("Enemy"))
-                {
-                    Destroy(hitCollider.gameObject);
-                }
-            }
         }
         #endregion
     }
